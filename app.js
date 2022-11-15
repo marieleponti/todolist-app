@@ -9,7 +9,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://127.0.0.1:27017/todolistDB");
+mongoose.connect("mongodb+srv://marieleponti:testing321@cluster0.ymv9www.mongodb.net/todolistDB");
 
 const itemsSchema = {
   name: String
@@ -18,7 +18,7 @@ const itemsSchema = {
 const Item = mongoose.model("Item", itemsSchema);
 
 const item1 = new Item({name: "Who do you want to be today?"});
-const item2 = new Item({name: "The world will ask you who you are. If you don't have a response, the world will tell you."});
+const item2 = new Item({name: "The world will ask you who you are. If you don't have an answer, the world will tell you."});
 const item3 = new Item({name: "Your TO DO LIST."});
 
 let defaultItems = [item1, item2, item3];
@@ -122,6 +122,9 @@ app.get("/about", function(req, res){
   res.render("about");
 });
 
-app.listen(3000, function() {
-  console.log("Server started on port 3000");
-});
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+app.listen(port);
+
