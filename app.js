@@ -18,7 +18,7 @@ const itemsSchema = {
 const Item = mongoose.model("Item", itemsSchema);
 
 const item1 = new Item({name: "Who do you want to be today?"});
-const item2 = new Item({name: "The world will ask you who you are. If you don't have an answer, the world will tell you."});
+const item2 = new Item({name: "The world will ask you who you are, and if you don't know, the world will tell you. -Carl Jung"});
 const item3 = new Item({name: "Your TO DO LIST."});
 
 let defaultItems = [item1, item2, item3];
