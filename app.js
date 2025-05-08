@@ -10,20 +10,13 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 
-// const http = require('http');
-// const hostname = 'localhost';
-// const port = 3000;
-// const server = http.createServer((req, res) => {
-//   res.statusCode = 200;
-//   res.setHeader('Content-Type', 'text/plain');
-//   res.end('Hello World!\n');
-// });
-// server.listen(port, hostname, () => {
-//   console.log(`Server running at http://${hostname}:${port}/`);
-// });
+require('dotenv').config();
+
+const dbUsername = process.env.DB_USERNAME;
+const dbPassword = process.env.DB_PASSWORD;
 
 
-mongoose.connect("mongodb+srv://marieleponti:testing321@cluster0.ymv9www.mongodb.net/todolistDB");
+mongoose.connect("mongodb+srv://${dbUsername}:${dbPassword}@cluster0.tda7zzr.mongodb.net/");
 
 const itemsSchema = {
   name: String
