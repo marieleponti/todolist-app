@@ -9,6 +9,20 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
+
+// const http = require('http');
+// const hostname = 'localhost';
+// const port = 3000;
+// const server = http.createServer((req, res) => {
+//   res.statusCode = 200;
+//   res.setHeader('Content-Type', 'text/plain');
+//   res.end('Hello World!\n');
+// });
+// server.listen(port, hostname, () => {
+//   console.log(`Server running at http://${hostname}:${port}/`);
+// });
+
+
 mongoose.connect("mongodb+srv://marieleponti:testing321@cluster0.ymv9www.mongodb.net/todolistDB");
 
 const itemsSchema = {
@@ -124,7 +138,7 @@ app.get("/about", function(req, res){
 
 let port = process.env.PORT;
 if (port == null || port == "") {
-  port = 3000;
+  port = 3030;
 }
 app.listen(port);
 
