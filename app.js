@@ -16,7 +16,7 @@ const dbUsername = process.env.DB_USERNAME;
 const dbPassword = process.env.DB_PASSWORD;
 
 
-mongoose.connect("mongodb+srv://${dbUsername}:${dbPassword}@cluster0.tda7zzr.mongodb.net/");
+mongoose.connect(`mongodb+srv://${dbUsername}:${dbPassword}@cluster0.tda7zzr.mongodb.net/`);
 
 const itemsSchema = {
   name: String
