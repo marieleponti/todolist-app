@@ -5,26 +5,29 @@ const _ = require("lodash");
 const app = express();
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static(path.join(__dirname, 'public')));
+require('dotenv').config();
+const path = require('path'); 
+app.use(express.static("public"));
+
 
 
 /** server settings */
-const http = require('http');
-const hostname = '127.0.0.1';
-const port = 3000;
+// const http = require('http');
+// const hostname = '127.0.0.1';
+// const port = 3000;
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World!\n');
-});
+// const server = http.createServer((req, res) => {
+//   res.statusCode = 200;
+//   res.setHeader('Content-Type', 'text/plain');
+//   res.end('Hello World!\n');
+// });
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+// server.listen(port, hostname, () => {
+//   console.log(`Server running at http://${hostname}:${port}/`);
+// });
 
 
-require('dotenv').config();
+
 const dbUsername = process.env.DB_USERNAME;
 const dbPassword = process.env.DB_PASSWORD;
 
@@ -143,6 +146,11 @@ app.get("/about", function(req, res){
 });
 
 
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+app.listen(port);
 
 
 
