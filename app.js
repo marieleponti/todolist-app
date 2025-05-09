@@ -12,19 +12,19 @@ app.use(express.static("public"));
 
 
 /** server settings */
-// const http = require('http');
-// const hostname = '127.0.0.1';
-// const port = 3000;
+const http = require('http');
+const hostname = '127.0.0.1';
+const port = 3000;
 
-// const server = http.createServer((req, res) => {
-//   res.statusCode = 200;
-//   res.setHeader('Content-Type', 'text/plain');
-//   res.end('Hello World!\n');
-// });
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello World!\n');
+});
 
-// server.listen(port, hostname, () => {
-//   console.log(`Server running at http://${hostname}:${port}/`);
-// });
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
 
 
 
@@ -145,12 +145,12 @@ app.get("/about", function(req, res){
   res.render("about");
 });
 
-
-let port = process.env.PORT;
-if (port == null || port == "") {
-  port = 3000;
-}
-app.listen(port);
+// Commenting out for deployment from nginx server
+// let port = process.env.PORT;
+// if (port == null || port == "") {
+//   port = 3000;
+// }
+// app.listen(port);
 
 
 
